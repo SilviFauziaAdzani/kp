@@ -46,6 +46,8 @@ $routes->get('buku/trash', 'Buku::trash');
 $routes->resource('buku');
 $routes->resource('kategori');
 $routes->resource('pengarang');
+$routes->resource('peminjaman');
+$routes->resource('anggota');
 
 /*
  * --------------------------------------------------------------------
