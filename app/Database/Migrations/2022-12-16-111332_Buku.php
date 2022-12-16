@@ -20,17 +20,17 @@ class Buku extends Migration
                 'constraint' => '100',
             ],
             'id_pengarang' => [
-                'type'           => 'BIGINT',
-                'constraint'     => 20,
+                'type' => 'BIGINT',
+                'constraint' => 20,
                 'unsigned'       => true,
-                'null' => true,
+                'null' => TRUE
             ],
             'penerbit' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
             'tahun_terbit' => [
-                'type'       => 'VARCHAR',
+                'type'       => 'INT',
                 'constraint' => '100',
             ],
             'kode_buku' => [
@@ -38,10 +38,10 @@ class Buku extends Migration
                 'constraint' => '100',
             ],
             'id_kategori' => [
-                'type'           => 'BIGINT',
-                'constraint'     => 20,
+                'type' => 'BIGINT',
+                'constraint' => 20,
                 'unsigned'       => true,
-                'null' => true,
+                'null' => TRUE
             ],
             'jumlah_buku' => [
                 'type'       => 'INT',
@@ -67,13 +67,15 @@ class Buku extends Migration
 
         ]);
         $this->forge->addKey('id_buku', true);
-        $this->forge->addForeignKey('id_pengarang', 'pengarang', 'id_pengarang', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('id_kategori', 'kategori', 'id_kategori', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_pengarang', 'pengarang', 'id_pengarang', 'CASCADE', 'CASCADE');
         $this->forge->createTable('buku');
     }
 
     public function down()
     {
+        $this->forge->dropForeignKey('buku', 'id_kategori');
+        $this->forge->dropForeignKey('buku', 'id_pengarang');
         $this->forge->dropTable('buku');
     }
 }

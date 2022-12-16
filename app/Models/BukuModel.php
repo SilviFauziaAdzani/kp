@@ -12,7 +12,7 @@ class BukuModel extends Model
     // protected $useAutoIncrement = true;
     // protected $insertID         = 0;
     protected $returnType       = 'object';
-    protected $useSoftDeletes   = true;
+    // protected $useSoftDeletes   = true;
     // protected $protectFields    = true;
     protected $allowedFields    = ['judul_buku', 'id_pengarang', 'penerbit', 'tahun_terbit', 'kode_buku', 'id_kategori', 'jumlah_buku', 'status_ketersediaan'];
 
