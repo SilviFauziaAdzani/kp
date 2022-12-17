@@ -40,6 +40,10 @@ $routes->get('create_db', function () {
 });
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+$routes->get('login', 'Auth::login');
+$routes->post('login/loginProcess', 'Auth::loginProcess');
+$routes->get('login/logout', 'Auth::logout');
+
 $routes->get('/', 'Home::index');
 
 $routes->get('buku/trash', 'Buku::trash');
