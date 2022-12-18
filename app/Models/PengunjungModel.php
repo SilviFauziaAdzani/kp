@@ -4,20 +4,20 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PengarangModel extends Model
+class PengunjungModel extends Model
 {
     // protected $DBGroup          = 'default';
-    protected $table            = 'pengarang';
-    protected $primaryKey       = 'id_pengarang';
+    protected $table            = 'pengunjung';
+    protected $primaryKey       = 'id_pengunjung';
     // protected $useAutoIncrement = true;
     // protected $insertID         = 0;
     protected $returnType       = 'object';
-    // protected $useSoftDeletes   = true;
+    // protected $useSoftDeletes   = false;
     // protected $protectFields    = true;
-    protected $allowedFields    = ['pengarang', 'info_pengarang'];
+    protected $allowedFields    = ['nama_pengunjung', 'kelas', 'id_buku', 'tanggal_kunjungan'];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     // protected $dateFormat    = 'datetime';
     // protected $createdField  = 'created_at';
     // protected $updatedField  = 'updated_at';

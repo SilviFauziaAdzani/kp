@@ -27,28 +27,23 @@
                         <input type="text" name="judul_buku" class="form-control" required autofocus>
                     </div>
                     <div class="form-group">
-                        <label>Pengarang *</label>
-                        <select name="id_pengarang" class="form-control" required>
-                            <option value="" hidden></option>
-                            <?php foreach ($pengarang as $key => $value) : ?>
-                                <option value="<?= $value->id_pengarang ?>"><?= $value->pengarang ?></option>
-                            <?php endforeach; ?>
-                        </select>
+                        <label>Pengarang </label>
+                        <input type="text" name="pengarang" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Penerbit *</label>
-                        <input type="text" name="penerbit" class="form-control" required>
+                        <label>Penerbit </label>
+                        <input type="text" name="penerbit" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Tahun Terbit *</label>
-                        <input type="number" name="tahun_terbit" class="form-control" required>
+                        <label>Tahun Terbit </label>
+                        <input type="number" name="tahun_terbit" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Kode Buku *</label>
-                        <input type="text" name="kode_buku" class="form-control" required>
+                        <label>Kode Buku </label>
+                        <input type="text" name="kode_buku" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Kategori *</label>
+                        <label>Kategori * </label>
                         <select name="id_kategori" class="form-control" required>
                             <option value="" hidden></option>
                             <?php foreach ($kategori as $key => $value) : ?>
@@ -57,12 +52,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Jumlah *</label>
-                        <input type="text" name="jumlah_buku" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Status *</label>
-                        <input type="text" name="status_ketersediaan" class="form-control" required>
+                        <label>Jumlah </label>
+                        <input type="number" name="jumlah_buku" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Info</label>

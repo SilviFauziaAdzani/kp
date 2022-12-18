@@ -38,6 +38,12 @@ $routes->get('create_db', function () {
         echo 'Database created!';
     }
 });
+// $routes->get('delete_db', function () {
+//     $forge = \Config\Database::forge();
+//     if ($forge->dropTable('pengarang', false, true)) {
+//         echo 'Database deleted!';
+//     }
+// });
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('login', 'Auth::login');
@@ -49,9 +55,9 @@ $routes->get('/', 'Home::index');
 $routes->get('buku/trash', 'Buku::trash');
 $routes->resource('buku');
 $routes->resource('kategori');
-$routes->resource('pengarang');
 $routes->resource('peminjaman');
 $routes->resource('anggota');
+$routes->resource('pengunjung');
 
 /*
  * --------------------------------------------------------------------

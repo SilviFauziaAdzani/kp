@@ -17,7 +17,7 @@
         <div class="alert alert-success alert-dismissible show fade">
             <div class="alert-body">
                 <button class="close" dats-dismiss="alert">X</button>
-                <b>Berhasi !</b>
+                <b>Berhasil !</b>
                 <?= session()->getFlashdata('success') ?>
             </div>
         </div>
@@ -54,7 +54,7 @@
                             <th>Kode Buku</th>
                             <th>Kategori</th>
                             <th>Jumlah</th>
-                            <th>Status</th>
+                            <!-- <th>Status</th> -->
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -69,9 +69,9 @@
                                 <td><?= $value->kode_buku ?></td>
                                 <td><?= $value->kategori ?></td>
                                 <td><?= $value->jumlah_buku ?></td>
-                                <td><?= $value->status_ketersediaan ?></td>
+
                                 <td class="text-center" style="width:15%">
-                                    <a href="<?= site_url('buku/' . $value->id_buku . '/edit') ?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="<?= site_url('buku/' . $value->id_buku . '/edit') ?>" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i></a>
                                     <form action="<?= site_url('buku/' . $value->id_buku) ?>" method="post" class="d-inline" onsubmit="return confirm('Yakin Hapus data ?')">
                                         <?= csrf_field() ?>
                                         <input type="hidden" name="_method" value="DELETE">

@@ -5,7 +5,6 @@ namespace App\Controllers;
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\BukuModel;
 use App\Models\KategoriModel;
-use App\Models\PengarangModel;
 
 class Buku extends ResourceController
 {
@@ -13,7 +12,6 @@ class Buku extends ResourceController
     {
         $this->buku = new BukuModel();
         $this->kategori = new KategoriModel();
-        $this->pengarang = new PengarangModel();
     }
     /**
      * Present a view of resource objects
@@ -46,7 +44,6 @@ class Buku extends ResourceController
     public function new()
     {
         $data['kategori'] = $this->kategori->findAll();
-        $data['pengarang'] = $this->pengarang->findAll();
         return view('buku/new', $data);
     }
 
@@ -76,7 +73,6 @@ class Buku extends ResourceController
         if (is_object($buku)) {
             $data['buku'] = $buku;
             $data['kategori'] = $this->kategori->findAll();
-            $data['pengarang'] = $this->pengarang->findAll();
             return view('buku/edit', $data);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();

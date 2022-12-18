@@ -88,17 +88,18 @@ class Kategori extends ResourceController
     public function delete($id = null)
     {
         $this->model->delete($id);
+        return redirect()->to(site_url('kategori'))->with('success', 'Data Berhasil DiHapus');
         // cek apakah data berhasil dihapus
-        if ($this->db->affected_rows() > 0) {
-            // data berhasil dihapus
-            // redirect ke halaman list data
-            return redirect()->to(site_url('kategori'))->with('success', 'Data Berhasil DiHapus');
-        } else {
-            // data tidak dapat dihapus
-            // set flashdata pesan error
-            $this->session->setFlashdata('message', 'Data Terpakai, tidak dapat dihapus');
-            // redirect ke halaman list data
-            return redirect()->to(site_url('kategori'));
-        }
+        // if ($this->model->affected_rows() > 0) {
+        //     // data berhasil dihapus
+        //     // redirect ke halaman list data
+
+        // } else {
+        //     // data tidak dapat dihapus
+        //     // set flashdata pesan error
+        //     $this->session->setFlashdata('message', 'Data Terpakai, tidak dapat dihapus');
+        //     // redirect ke halaman list data
+        //     return redirect()->to(site_url('kategori'));
+        // }
     }
 }

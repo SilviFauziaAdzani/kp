@@ -3,7 +3,6 @@
 <li class="menu-header">Buku</li>
 <li class="active"><a class="nav-link" href="<?= site_url('buku') ?>"><i class="fas fa-book"></i> <span>Buku</span></a></li>
 <li class="active"><a class="nav-link" href="<?= site_url('kategori') ?>"><i class="fas fa-th-large"></i> <span>Kategori</span></a></li>
-<li class="active"><a class="nav-link" href="<?= site_url('pengarang') ?>"><i class="fas fa-list"></i> <span>Pengarang</span></a></li>
 <li class="menu-header">Transaksi</li>
 <li class="active"><a class="nav-link" href="<?= site_url('peminjaman') ?>"><i class="fas fa-file-alt"></i> <span>Peminjaman</span></a></li>
 <li class="menu-header">Anggota</li>

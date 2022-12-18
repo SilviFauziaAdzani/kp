@@ -230,7 +230,7 @@
                     </li>
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                             <img alt="image" src="<?= base_url() ?>/template/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-                            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
+                            <div class="d-sm-none d-lg-inline-block">MTsN 4 Sumedang</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="dropdown-title">Logged in 5 min ago</div>
@@ -264,7 +264,7 @@
                     </ul>
 
                     <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-                        <a href="<?= site_url('pengunjung/add') ?>" class="btn btn-primary btn-lg btn-block btn-icon-split">
+                        <a href="<?= site_url('pengunjung/new') ?>" class="btn btn-primary btn-lg btn-block btn-icon-split">
                             <i class="fas fa-clipboard"></i> Daftar Hadir
                         </a>
                     </div>
@@ -288,8 +288,8 @@
 
     <!-- General JS Scripts -->
     <script src="<?= base_url() ?>/template/node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="<?= base_url() ?>/template/node_modules/dist/popper.js"></script>
-    <script src="<?= base_url() ?>/template/node_modules/dist/tooltip.js"></script>
+    <!-- <script src="<?= base_url() ?>/template/node_modules/dist/popper.js"></script> -->
+    <!-- <script src="<?= base_url() ?>/template/node_modules/dist/tooltip.js"></script> -->
     <script src="<?= base_url() ?>/template/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="<?= base_url() ?>/template/node_modules/jquery.nicescroll/dist/jquery.nicescroll.min.js"></script>
     <script src="<?= base_url() ?>/template/node_modules/moment/min/moment.min.js"></script>

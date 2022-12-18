@@ -4,33 +4,36 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Anggota extends Migration
+class Peminjaman extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_anggota' => [
+            'id_pengunjung' => [
                 'type'           => 'BIGINT',
-                'constraint'     => 20,
+                'constraint'     => 225,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'no_anggota' => [
+            'nama_pengunjung' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '50',
-            ],
-            'nama_siswa' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '50',
+                'constraint' => '225',
             ],
             'kelas' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '50',
+                'type' => 'VARCHAR',
+                'constraint' => 225,
+                'null' => TRUE,
             ],
-            'info_anggota' => [
-                'type' => 'TEXT',
+            'id_buku' => [
+                'type'           => 'BIGINT',
+                'constraint'     => 225,
+                'unsigned'       => true,
+            ],
+            'tanggal_kunjungan' => [
+                'type' => 'DATE',
                 'null' => true,
             ],
+
             'created_at' => [
                 'type'       => 'DATETIME',
                 'null' => true,
@@ -43,13 +46,16 @@ class Anggota extends Migration
                 'type'       => 'DATETIME',
                 'null' => true,
             ],
+
         ]);
-        $this->forge->addKey('id_anggota', true);
-        $this->forge->createTable('anggota');
+        $this->forge->addKey('id_pengunjung', true);
+        $this->forge->addForeignKey('id_buku', 'buku', 'id_buku', 'CASCADE', 'CASCADE');
+        $this->forge->createTable('pengunjung');
     }
 
     public function down()
     {
-        $this->forge->dropTable('anggota');
+        $this->forge->dropForeignKey('pengunjung', 'id_buku');
+        $this->forge->dropTable('pengunjung');
     }
 }

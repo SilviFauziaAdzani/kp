@@ -14,8 +14,15 @@ class PeminjamanModel extends Model
     protected $returnType       = 'object';
     // protected $useSoftDeletes   = false;
     // protected $protectFields    = true;
-    protected $allowedFields    = ['id_anggota','id_buku','pinjaman'];
-
+    protected $allowedFields    = ['id_anggota', 'id_buku', 'pinjaman', 'kembali', 'status'];
+    function getAll()
+    {
+        $builder = $this->db->table('peminjaman');
+        $builder = $this->join('anggota', 'anggota.id_anggota = peminjaman.id_anggota');
+        $builder = $this->join('buku', 'buku.id_buku = peminjaman.id_buku');
+        $query = $builder->get();
+        return $query->getResult();
+    }
     // Dates
     protected $useTimestamps = true;
     // protected $dateFormat    = 'datetime';

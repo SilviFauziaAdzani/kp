@@ -4,22 +4,22 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Pengarang extends Migration
+class Kategori extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_pengarang' => [
+            'id_kategori' => [
                 'type'           => 'BIGINT',
-                'constraint'     => 20,
+                'constraint'     => 225,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'pengarang' => [
+            'kategori' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '50',
+                'constraint' => '225',
             ],
-            'info_pengarang' => [
+            'info_kategori' => [
                 'type' => 'TEXT',
                 'null' => true,
             ],
@@ -36,12 +36,12 @@ class Pengarang extends Migration
                 'null' => true,
             ],
         ]);
-        $this->forge->addKey('id_pengarang', true);
-        $this->forge->createTable('pengarang');
+        $this->forge->addKey('id_kategori', true);
+        $this->forge->createTable('kategori');
     }
 
     public function down()
     {
-        $this->forge->dropTable('pengarang');
+        $this->forge->dropTable('kategori');
     }
 }

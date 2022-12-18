@@ -3,11 +3,16 @@
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
-// use App\Models\PengarangModel;
+use App\Models\BukuModel;
+use App\Models\PengunjungModel;
 
-class Pengarang extends ResourceController
+class Pengunjung extends ResourceController
 {
-    protected $modelName = 'App\Models\PengarangModel';
+    function __construct()
+    {
+        $this->buku = new BukuModel();
+        $this->pengunjung = new PengunjungModel();
+    }
     /**
      * Return an array of resource objects, themselves in array format
      *
@@ -15,8 +20,8 @@ class Pengarang extends ResourceController
      */
     public function index()
     {
-        $data['pengarang'] = $this->model->findAll();
-        return view('pengarang/index', $data);
+        $data['pengunjung'] = $this->pengunjung->findAll();
+        return view('pengunjung/index', $data);
     }
 
     /**
@@ -29,14 +34,15 @@ class Pengarang extends ResourceController
         //
     }
 
-    /**pengarangk
+    /**
      * Return a new resource object, with default properties
      *
      * @return mixed
      */
     public function new()
     {
-        return view('pengarang/new');
+        $data['buku'] = $this->buku->findAll();
+        return view('pengunjung/new', $data);
     }
 
     /**
@@ -49,7 +55,7 @@ class Pengarang extends ResourceController
         $data = $this->request->getPost();
 
         $this->model->insert($data);
-        return redirect()->to(site_url('pengarang'))->with('success', 'Data Berhasil Disimpan');
+        return redirect()->to(site_url('pengunjung'))->with('success', 'Data Berhasil Disimpan');
     }
 
     /**
@@ -59,10 +65,11 @@ class Pengarang extends ResourceController
      */
     public function edit($id = null)
     {
-        $pengarang = $this->model->where('id_pengarang', $id)->first();
-        if (is_object($pengarang)) {
-            $data['pengarang'] = $pengarang;
-            return view('pengarang/edit', $data);
+        $pengunjung = $this->model->where('id_pengunjung', $id)->first();
+        if (is_object($pengunjung)) {
+            $data['pengunjung'] = $pengunjung;
+            $data['buku'] = $this->buku->findAll();
+            return view('pengunjung/edit', $data);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
@@ -77,7 +84,7 @@ class Pengarang extends ResourceController
     {
         $data = $this->request->getPost();
         $this->model->update($id, $data);
-        return redirect()->to(site_url('pengarang'))->with('success', 'Data Berhasil DiUpdate');
+        return redirect()->to(site_url('pengunjung'))->with('success', 'Data Berhasil DiUpdate');
     }
 
     /**
@@ -88,6 +95,6 @@ class Pengarang extends ResourceController
     public function delete($id = null)
     {
         $this->model->delete($id);
-        return redirect()->to(site_url('pengarang'))->with('success', 'Data Berhasil DiHapus');
+        return redirect()->to(site_url('pengunjung'))->with('success', 'Data Berhasil DiHapus');
     }
 }

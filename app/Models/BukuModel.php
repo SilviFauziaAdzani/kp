@@ -14,13 +14,12 @@ class BukuModel extends Model
     protected $returnType       = 'object';
     // protected $useSoftDeletes   = true;
     // protected $protectFields    = true;
-    protected $allowedFields    = ['judul_buku', 'id_pengarang', 'penerbit', 'tahun_terbit', 'kode_buku', 'id_kategori', 'jumlah_buku', 'status_ketersediaan'];
+    protected $allowedFields    = ['judul_buku', 'pengarang', 'penerbit', 'tahun_terbit', 'kode_buku', 'id_kategori', 'jumlah_buku', 'jumlah_tersedia'];
 
     function getAll()
     {
         $builder = $this->db->table('buku');
         $builder = $this->join('kategori', 'kategori.id_kategori = buku.id_kategori');
-        $builder = $this->join('pengarang', 'pengarang.id_pengarang = buku.id_pengarang');
         $query = $builder->get();
         return $query->getResult();
     }

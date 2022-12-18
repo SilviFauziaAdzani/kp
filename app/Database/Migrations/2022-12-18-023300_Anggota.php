@@ -4,22 +4,30 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Kategori extends Migration
+class Anggota extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_kategori' => [
+            'id_anggota' => [
                 'type'           => 'BIGINT',
-                'constraint'     => 20,
+                'constraint'     => 225,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'kategori' => [
+            'no_anggota' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '50',
+                'constraint' => '225',
             ],
-            'info_kategori' => [
+            'nama_siswa' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '225',
+            ],
+            'kelas' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '225',
+            ],
+            'info_anggota' => [
                 'type' => 'TEXT',
                 'null' => true,
             ],
@@ -36,12 +44,12 @@ class Kategori extends Migration
                 'null' => true,
             ],
         ]);
-        $this->forge->addKey('id_kategori', true);
-        $this->forge->createTable('kategori');
+        $this->forge->addKey('id_anggota', true);
+        $this->forge->createTable('anggota');
     }
 
     public function down()
     {
-        $this->forge->dropTable('kategori');
+        $this->forge->dropTable('anggota');
     }
 }

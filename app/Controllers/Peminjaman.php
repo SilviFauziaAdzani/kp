@@ -3,9 +3,18 @@
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
+use App\Models\BukuModel;
+use App\Models\AnggotaModel;
+use App\Models\PeminjamanModel;
 
 class Peminjaman extends ResourceController
 {
+    function __construct()
+    {
+        $this->buku = new BukuModel();
+        $this->anggota = new AnggotaModel();
+        $this->peminjaman = new PeminjamanModel();
+    }
     /**
      * Return an array of resource objects, themselves in array format
      *
@@ -13,7 +22,8 @@ class Peminjaman extends ResourceController
      */
     public function index()
     {
-        return view('peminjaman/index');
+        $data['peminjaman'] = $this->peminjaman->getAll();
+        return view('peminjaman/index', $data);
     }
 
     /**
@@ -33,7 +43,10 @@ class Peminjaman extends ResourceController
      */
     public function new()
     {
-        return view('peminjaman/new');
+        $data['buku'] = $this->buku->findAll();
+        $data['anggota'] = $this->anggota->findAll();
+        $data['buku'] = $this->buku->findAll();
+        return view('peminjaman/new', $data);
     }
 
     /**
@@ -43,7 +56,9 @@ class Peminjaman extends ResourceController
      */
     public function create()
     {
-        //
+        $data = $this->request->getPost();
+        $this->peminjaman->insert($data);
+        return redirect()->to(site_url('peminjaman'))->with('success', 'Data Berhasil Disimpan');
     }
 
     /**
@@ -53,7 +68,15 @@ class Peminjaman extends ResourceController
      */
     public function edit($id = null)
     {
-        return view('peminjaman/edit');
+        $peminjaman = $this->peminjaman->find($id);
+        if (is_object($peminjaman)) {
+            $data['peminjaman'] = $peminjaman;
+            $data['anggota'] = $this->anggota->findAll();
+            $data['buku'] = $this->buku->findAll();
+            return view('peminjaman/edit', $data);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
     }
 
     /**
@@ -63,7 +86,9 @@ class Peminjaman extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        $data = $this->request->getPost();
+        $this->peminjaman->update($id, $data);
+        return redirect()->to(site_url('peminjaman'))->with('success', 'Data Berhasil DiUpdate');
     }
 
     /**
@@ -73,6 +98,7 @@ class Peminjaman extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        $this->peminjaman->delete($id);
+        return redirect()->to(site_url('peminjaman'))->with('success', 'Data Berhasil DiHapus');
     }
 }
