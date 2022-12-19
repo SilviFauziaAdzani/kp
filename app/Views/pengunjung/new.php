@@ -1,71 +1,111 @@
-<?= $this->extend('layout/default') ?>
+<!DOCTYPE html>
+<html lang="en">
 
-<?= $this->section('title') ?>
-<title>Create Buku &mdash; Perpustakaan</title>
-<?= $this->endSection() ?>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Daftar Hadir &mdash; Perpustakaan</title>
 
-<?= $this->section('content') ?>
-<section class="section">
-    <div class="section-header">
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 
-        <div class="section-header-back">
-            <a href="<?= site_url('buku') ?>" class="btn"><i class="fas fa-arrow-left"></i></a>
-        </div>
-        <h1>Create Buku</h1>
+    <!-- CSS Libraries -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/selectiric/public/selectric.css"> -->
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="<?= base_url() ?>/template/assets/css/style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/template/assets/css/components.css">
+    <!-- Start GA 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-94034622-3');
+    </script>
+     /END GA -->
+</head>
+
+<body>
+    <div id="app">
+        <section class="section">
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+                        <div class="login-brand">
+                            <img src="<?= base_url() ?>/template/assets/img/avatar/avatar-1.png" alt="logo" width="100" class="shadow-light rounded-circle" alt="logo" width="100" class="shadow-light rounded-circle">
+                        </div>
+
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h4>Daftar Hadir</h4>
+                            </div>
+
+                            <div class="card-body">
+                                <form action="<?= site_url('pengunjung') ?>" method="POST" autocomplete="off">
+                                    <?= csrf_field() ?>
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <label>Nama Siswa *</label>
+                                            <input type="text" class="form-control" name="nama_pengunjung" required autofocus>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label>Kelas *</label>
+                                            <input type="text" class="form-control" name="kelas" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Judul Buku Bacaan</label>
+                                        <input type="text" class="form-control" name="judul_buku">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tanggal Kunjungan</label>
+                                        <input type="DATE" class="form-control" name="tanggal_kunjungan" required>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                            Selesai
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="simple-footer">
+                            Copyright &copy; Group KP UNSAP Sumedang 2022
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <div class="section-body">
-        <div class="card">
-            <div class="card-header">
-                <h4>Buat Buku</h4>
-            </div>
-            <div class="card-body col-md-6">
-                <form action="<?= site_url('buku') ?>" method="POST" autocomplete="off">
-                    <?= csrf_field() ?>
-                    <div class="form-group">
-                        <label>Judul buku *</label>
-                        <input type="text" name="judul_buku" class="form-control" required autofocus>
-                    </div>
-                    <div class="form-group">
-                        <label>Pengarang </label>
-                        <input type="text" name="pengarang" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Penerbit </label>
-                        <input type="text" name="penerbit" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Tahun Terbit </label>
-                        <input type="number" name="tahun_terbit" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Kode Buku </label>
-                        <input type="text" name="kode_buku" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>buku * </label>
-                        <select name="id_buku" class="form-control" required>
-                            <option value="" hidden></option>
-                            <?php foreach ($buku as $key => $value) : ?>
-                                <option value="<?= $value->id_buku ?>"><?= $value->judul_buku ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Jumlah </label>
-                        <input type="number" name="jumlah_buku" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Info</label>
-                        <textarea name="info_buku" class="form-control"></textarea>
-                    </div>
-                    <div>
-                        <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i> Save</button>
-                        <button type="reset" class="btn btn-secondary">Reset</i></button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-<?= $this->endSection() ?>
+    <!-- General JS Scripts -->
+    <script src="<?= base_url() ?>/template/node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- <script src="<?= base_url() ?>/template/node_modules/dist/popper.js"></script> -->
+    <!-- <script src="<?= base_url() ?>/template/node_modules/dist/tooltip.js"></script> -->
+    <script src="<?= base_url() ?>/template/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>/template/node_modules/jquery.nicescroll/dist/jquery.nicescroll.min.js"></script>
+    <script src="<?= base_url() ?>/template/node_modules/moment/min/moment.min.js"></script>
+    <script src="<?= base_url() ?>/template/assets/js/stisla.js"></script>
+    <!-- JS Libraies -->
+    <script src="<?= base_url() ?>/template/node_modules/jquery-pwstrength/jquery.pwstrength.min.js"></script>
+    <!-- <script src="<?= base_url() ?>/template/node_modules/selectiric/public/selectric.css"></script> -->
+
+    <!-- Page Specific JS File -->
+    <script src="<?= base_url() ?>/template/assets/js/page/auth-register.js"></script>
+
+    <!-- Template JS File -->
+    <script src="<?= base_url() ?>/template/assets/js/scripts.js"></script>
+    <script src="<?= base_url() ?>/template/assets/js/custom.js"></script>
+</body>
+
+</html>

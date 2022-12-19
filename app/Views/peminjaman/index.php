@@ -38,12 +38,12 @@
         <div class="card">
             <div class="card-header">
                 <h4>Data Peminjaman</h4>
-                <div class="card-header-action">
+                <!-- <div class="card-header-action">
                     <a href="peminjaman/trash" class="btn btn-danger"><i class="fa fa-trash"></i> Sampah</a>
-                </div>
+                </div> -->
             </div>
             <div class="card-body table-responsive">
-                <table class="table table-striped table-md">
+                <table class="table table-striped table-md" id="table1">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -69,9 +69,18 @@
                                 <td><?= $value->pengarang ?></td>
                                 <td><?= $value->pinjaman ?></td>
                                 <td><?= $value->kembali ?></td>
+                                <td>
+                                    <?php if ($value->kembali == null) : ?>
+                                        <span class="badge badge-warning"> Pinjam
+                                        <?php else : ?>
+                                            <span class="badge badge-success"> Kembali
+                                            <?php endif; ?>
+
+                                            </span>
+                                </td>
 
                                 <td class="text-center" style="width:15%">
-                                    <a href="<?= site_url('peminjaman/' . $value->id_peminjaman . '/edit') ?>" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="<?= site_url('peminjaman/' . $value->id_peminjaman . '/edit') ?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
                                     <form action="<?= site_url('peminjaman/' . $value->id_peminjaman) ?>" method="post" class="d-inline" onsubmit="return confirm('Yakin Hapus data ?')">
                                         <?= csrf_field() ?>
                                         <input type="hidden" name="_method" value="DELETE">

@@ -38,9 +38,9 @@ $routes->get('create_db', function () {
         echo 'Database created!';
     }
 });
-// $routes->get('delete_db', function () {
+// $routes->get('delete_fg', function () {
 //     $forge = \Config\Database::forge();
-//     if ($forge->dropTable('pengarang', false, true)) {
+//     if ($forge->dropForeignKey('pengunjung', 'id_buku')) {
 //         echo 'Database deleted!';
 //     }
 // });
@@ -51,6 +51,7 @@ $routes->post('login/loginProcess', 'Auth::loginProcess');
 $routes->get('login/logout', 'Auth::logout');
 
 $routes->get('/', 'Home::index');
+$routes->get('home', 'Home::index');
 
 $routes->get('buku/trash', 'Buku::trash');
 $routes->resource('buku');

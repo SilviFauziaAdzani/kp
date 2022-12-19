@@ -3,16 +3,11 @@
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
-use App\Models\BukuModel;
-use App\Models\PengunjungModel;
+
 
 class Pengunjung extends ResourceController
 {
-    function __construct()
-    {
-        $this->buku = new BukuModel();
-        $this->pengunjung = new PengunjungModel();
-    }
+    protected $modelName = 'App\Models\PengunjungModel';
     /**
      * Return an array of resource objects, themselves in array format
      *
@@ -20,7 +15,7 @@ class Pengunjung extends ResourceController
      */
     public function index()
     {
-        $data['pengunjung'] = $this->pengunjung->findAll();
+        $data['pengunjung'] = $this->model->findAll();
         return view('pengunjung/index', $data);
     }
 
@@ -41,8 +36,7 @@ class Pengunjung extends ResourceController
      */
     public function new()
     {
-        $data['buku'] = $this->buku->findAll();
-        return view('pengunjung/new', $data);
+        return view('pengunjung/new');
     }
 
     /**
@@ -68,7 +62,6 @@ class Pengunjung extends ResourceController
         $pengunjung = $this->model->where('id_pengunjung', $id)->first();
         if (is_object($pengunjung)) {
             $data['pengunjung'] = $pengunjung;
-            $data['buku'] = $this->buku->findAll();
             return view('pengunjung/edit', $data);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();

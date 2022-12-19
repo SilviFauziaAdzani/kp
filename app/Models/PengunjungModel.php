@@ -14,10 +14,10 @@ class PengunjungModel extends Model
     protected $returnType       = 'object';
     // protected $useSoftDeletes   = false;
     // protected $protectFields    = true;
-    protected $allowedFields    = ['nama_pengunjung', 'kelas', 'id_buku', 'tanggal_kunjungan'];
+    protected $allowedFields    = ['nama_pengunjung', 'kelas', 'judul_buku', 'tanggal_kunjungan'];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     // protected $dateFormat    = 'datetime';
     // protected $createdField  = 'created_at';
     // protected $updatedField  = 'updated_at';

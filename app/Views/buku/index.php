@@ -38,12 +38,12 @@
         <div class="card">
             <div class="card-header">
                 <h4>Data Buku</h4>
-                <div class="card-header-action">
+                <!-- <div class="card-header-action">
                     <a href="buku/trash" class="btn btn-danger"><i class="fa fa-trash"></i> Sampah</a>
-                </div>
+                </div> -->
             </div>
             <div class="card-body table-responsive">
-                <table class="table table-striped table-md">
+                <table class="table table-striped table-md" id="table1">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -71,7 +71,7 @@
                                 <td><?= $value->jumlah_buku ?></td>
 
                                 <td class="text-center" style="width:15%">
-                                    <a href="<?= site_url('buku/' . $value->id_buku . '/edit') ?>" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="<?= site_url('buku/' . $value->id_buku . '/edit') ?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
                                     <form action="<?= site_url('buku/' . $value->id_buku) ?>" method="post" class="d-inline" onsubmit="return confirm('Yakin Hapus data ?')">
                                         <?= csrf_field() ?>
                                         <input type="hidden" name="_method" value="DELETE">

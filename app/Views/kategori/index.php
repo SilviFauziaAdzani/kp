@@ -40,7 +40,7 @@
                 <h4>Data Kategori</h4>
             </div>
             <div class="card-body table-responsive">
-                <table class="table table-striped table-md">
+                <table class="table table-striped table-md" id="table1">
                     <thead>
                         <tr>
                             <th>#</th>
